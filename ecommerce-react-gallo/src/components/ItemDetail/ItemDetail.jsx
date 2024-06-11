@@ -50,7 +50,8 @@ const ItemDetail = ({id, name, brand, price, category, stock, description, img})
           <Button>
             <Link to={`/product/${id}`}>Details</Link>
           </Button>
-          <ItemCount stock={stock} onAdd={onAdd}/>
+          < ItemCount stock={stock} onAdd={onAdd}/>
+          < ToastContainer />
         </Flex>
       </Card>
     </Flex>
