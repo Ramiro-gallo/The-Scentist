@@ -20,7 +20,7 @@ const ItemDetail = ({id, name, brand, price, category, stock, description, img})
     const onAdd = (quantity) => {
         toast(`You added ${quantity} units of ${name}`)
     };
-
+    
     return (
     <Flex>
       <Card
