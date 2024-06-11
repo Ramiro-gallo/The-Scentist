@@ -1,16 +1,24 @@
 import HeroSection from "./components/HeroSection/HeroSection"
+import ItemDetailContainer from "./components/ItemDetailContainer/ItemDetailContainer"
 import ItemListContainer from "./components/ItemListContainer/ItemListContainer"
 import NavBar from "./components/NavBar/NavBar"
-import { Box } from '@chakra-ui/react'
-
+import { ChakraProvider } from '@chakra-ui/react'
+import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import 'react-toastify/dist/ReactToastify.css';
 function App() {
 
   return (
-    <Box w={'100%'}>
+    <ChakraProvider>
+      <BrowserRouter>
         <NavBar />
         <HeroSection />
-        <ItemListContainer title={'Online shop'} />
-    </Box>
+        <Routes>
+          <Route path="/" element={<ItemListContainer />} />
+          <Route path="/categories/:categoryId" element={<ItemListContainer />} />
+          <Route path="/product/:productId" element={<ItemDetailContainer /> } />
+        </Routes>
+      </BrowserRouter>
+    </ChakraProvider>
   )
 }
 
