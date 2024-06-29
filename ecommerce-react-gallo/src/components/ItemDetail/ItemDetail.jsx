@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import {
     Button, 
     Flex,
@@ -14,15 +14,30 @@ import {
 import ItemCount from '../ItemCount/ItemCount'
 import { Link } from 'react-router-dom'
 import { ToastContainer, toast} from 'react-toastify'
+import Context from '../../context/CartContext'
 
 
 const ItemDetail = ({id, name, brand, price, category, stock, description, img}) => {
+    
+    const { addItem } = useContext(Context)
+  
     const onAdd = (quantity) => {
+        const item = {
+          id,
+          name,
+          price
+        }
+        addItem(item, quantity)
         toast(`You added ${quantity} units of ${name}`)
     };
     
     return (
-    <Flex>
+    <Flex 
+      w="100%"
+      align={"center"}
+      justify={"center"}
+      m={"2rem 0"}
+    >
       <Card
       maxW='sm'>
         <CardBody>
@@ -43,13 +58,10 @@ const ItemDetail = ({id, name, brand, price, category, stock, description, img})
         </CardBody>
         <Divider />
         <Flex 
-        justify="space-between"
+        justify="center"
         alignItems="center"
         p="1rem"
         >
-          <Button>
-            <Link to={`/product/${id}`}>Details</Link>
-          </Button>
           < ItemCount stock={stock} onAdd={onAdd}/>
           < ToastContainer />
         </Flex>

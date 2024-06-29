@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import {
   Button, 
   Flex,
@@ -15,10 +15,19 @@ import {
 import ItemCount from '../ItemCount/ItemCount'
 import { Link } from 'react-router-dom'
 import { ToastContainer, toast} from 'react-toastify'
+import Context from '../../context/CartContext'
 
 const Item = ({id, name, price, img, description, stock}) => {
 
+  const { addItem } = useContext(Context)
+
   const onAdd = (quantity) => {
+    const item = {
+      id,
+      name,
+      price
+    }
+    addItem(item, quantity)
     toast(`You added ${quantity} units of ${name}`)
   };
   
