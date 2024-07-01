@@ -6,6 +6,8 @@ import { ChakraProvider } from '@chakra-ui/react'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import 'react-toastify/dist/ReactToastify.css';
 import { CartContextProvider } from "./context/CartContext"
+import PageNotFound from "./components/PageNotFound/PageNotFound"
+import Cart from "./components/Cart/Cart"
 function App() {
 
   return (
@@ -18,6 +20,8 @@ function App() {
             <Route path="/" element={<ItemListContainer />} />
             <Route path="/categories/:categoryId" element={<ItemListContainer />} />
             <Route path="/product/:productId" element={<ItemDetailContainer /> } />
+            <Route path="*" element={<PageNotFound />} />
+            <Route path="/cart" element={<Cart/>} />
           </Routes>
         </BrowserRouter>
       </CartContextProvider>

@@ -44,6 +44,7 @@
   color: var(--clr-neutral-light);
 }
 .hero-container{
+  margin-top: 10vh;
   height: 90vh;
   width: 100%;
   color: var(--clr-neutral-light);

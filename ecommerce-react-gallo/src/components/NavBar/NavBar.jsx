@@ -10,6 +10,9 @@ const NavBar = () => {
   return (
     <Flex 
     className='navbar'
+    position={'fixed'}
+    top={'0'}
+    zIndex={'999'}
     >
       <Heading className='logo-title'><Link to='/'>The Scentist</Link></Heading>
       <CartWidget />

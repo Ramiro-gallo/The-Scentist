@@ -54,15 +54,13 @@ const Item = ({id, name, price, img, description, stock}) => {
         </CardBody>
         <Divider />
         <Flex 
-        justify="space-between"
+        justify="center"
         alignItems="center"
         p="1rem"
         >
           <Button>
             <Link to={`/product/${id}`}>Details</Link>
           </Button>
-          <ItemCount stock={stock} onAdd={onAdd}/>
-          < ToastContainer />
         </Flex>
       </Card>
     </Box>

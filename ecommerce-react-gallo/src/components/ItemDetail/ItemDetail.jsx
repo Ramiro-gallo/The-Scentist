@@ -63,7 +63,7 @@ const ItemDetail = ({id, name, brand, price, category, stock, description, img})
         p="1rem"
         >
           < ItemCount stock={stock} onAdd={onAdd}/>
-          < ToastContainer />
+          < ToastContainer  />
         </Flex>
       </Card>
     </Flex>
