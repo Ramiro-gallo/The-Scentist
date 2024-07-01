@@ -14,7 +14,7 @@ const NavBar = () => {
     top={'0'}
     zIndex={'999'}
     >
-      <Heading className='logo-title'><Link to='/'>The Scentist</Link></Heading>
+      <Heading fontSize={'larger'} className='logo-title'><Link to='/'>The Scentist</Link></Heading>
       <CartWidget />
     </Flex>
   )
