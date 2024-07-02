@@ -12,7 +12,6 @@ import {
     Image,
   } from '@chakra-ui/react'
 import ItemCount from '../ItemCount/ItemCount'
-import { Link } from 'react-router-dom'
 import { ToastContainer, toast} from 'react-toastify'
 import Context from '../../context/CartContext'
 
@@ -57,8 +56,8 @@ const ItemDetail = ({id, name, brand, price, category, stock, description, img})
           </Stack>
         </CardBody>
         <Divider />
-        <Flex 
-        justify="center"
+        <Flex
+        justify='center'
         alignItems="center"
         p="1rem"
         >

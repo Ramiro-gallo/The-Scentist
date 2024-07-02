@@ -1,5 +1,8 @@
 import React, { useState } from 'react'
-import { Button, ButtonGroup, Flex } from '@chakra-ui/react'
+import { Button, Flex, Text } from '@chakra-ui/react'
+import { Link } from 'react-router-dom';
+import { RiArrowGoBackLine } from "react-icons/ri";
+
 const ItemCount = ({stock, onAdd}) => {
     const [count, setCount] = useState(1) ;
 
@@ -14,10 +17,19 @@ const ItemCount = ({stock, onAdd}) => {
 
     return (
         <Flex>
-            <Button onClick={decrease}>-</Button>
-            {count}
-            <Button onClick={increase}>+</Button>
+            <Flex>
+              <Button onClick={decrease}>-</Button>
+              <Text padding={'.5rem'}>
+                {count}
+              </Text>
+              <Button onClick={increase}>+</Button>
+            </Flex>
             <Button onClick={() => onAdd(count)}>Add to cart</Button>
+            <Link to={'/'}>
+              <Button>
+                < RiArrowGoBackLine />
+              </Button>
+            </Link>
         </Flex>
     )
 }
