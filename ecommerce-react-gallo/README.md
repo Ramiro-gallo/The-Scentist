@@ -6,7 +6,7 @@
 
 ### Deploy
 
-Link
+[Link](https://the-scentist.vercel.app/)
 
 ### Description
 
