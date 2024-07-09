@@ -1,10 +1,11 @@
 import React, { useEffect, useState} from 'react'
 import { Flex, Grid } from '@chakra-ui/react'
 import CategoriesDropdown from '../CategoriesDropdown/CategoriesDropdown'
-import { getProducts, getProductsByCategory } from '../../data/asyncMock';
 import ItemList from '../ItemList/ItemList';
 import {useParams} from 'react-router-dom';
 import {BounceLoader} from 'react-spinners';
+import { collection, query, where, getDocs } from 'firebase/firestore'  
+import { db } from '../../config/firebase';
 
 const ItemListContainer = () => {
   const [ products, setProducts ] = useState([]);
@@ -15,12 +16,26 @@ const ItemListContainer = () => {
 
   useEffect(()=>{
     setLoading(true)
-      const productData = categoryId ? getProductsByCategory(categoryId) : getProducts();
+    const getData = async () => {
+      const coleccion = collection(db, 'productos')
+      const queryRef = !categoryId ? 
+      coleccion
+      :
+      query(coleccion, where('category', '==', categoryId))
+      
+      const response = await getDocs(queryRef)
 
-      productData
-        .then((data) => setProducts(data))
-        .catch((error) => console.log(error))
-        .finally(() => setLoading(false))
+      const productos = response.docs.map((doc) => {
+        const newItem = {
+          ...doc.data(),
+        }
+        return newItem
+      })
+      setProducts(productos)
+      setLoading(false) 
+
+    }
+    getData()
   },[categoryId]);
 
   return (

@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom';
-import { getProductById } from '../../data/asyncMock';
 import ItemDetail from '../ItemDetail/ItemDetail';
 import { Flex } from '@chakra-ui/react'
 import { BounceLoader } from 'react-spinners';
-
+import { doc, getDoc } from 'firebase/firestore';
+import { db } from '../../config/firebase';
 
 const ItemDetailContainer = () => {
     const [ producto, setProducto ] = useState({});
@@ -12,10 +12,22 @@ const ItemDetailContainer = () => {
     const { productId } = useParams(); 
 
     useEffect(() => {
-        getProductById(productId)
-            .then((data) => setProducto(data))
-            .catch((error) => console.log(error))
-            .finally(() => setLoading(false))
+      const getData = async () => {
+        const queryRef = doc(db, 'productos', productId)
+
+        const response = await getDoc(queryRef)
+
+
+        const newItem = {
+          ...response.data(),
+          id: response.id,
+        }
+        console.log(newItem)
+        setProducto(newItem)
+        setLoading(false) 
+      }
+
+      getData()
     },[])
 
   return (

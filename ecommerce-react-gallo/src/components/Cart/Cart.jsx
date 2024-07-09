@@ -89,6 +89,20 @@ const Cart = () => {
                                 </Button>
                             </Th>
                         </Tr>
+                        <Tr>
+                            <Th></Th>
+                            <Th></Th>
+                            <Th></Th>
+                            <Th></Th>
+                            <Th>
+                                <Link to='/checkout'>
+                                    < Button
+                                    _hover={{
+                                        color: 'green',
+                                    }}>Checkout</Button>
+                                </Link>
+                            </Th>
+                        </Tr>
                     </Tfoot>
                 </Table>
             </TableContainer>

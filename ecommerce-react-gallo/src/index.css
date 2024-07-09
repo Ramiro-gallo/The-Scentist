@@ -19,7 +19,7 @@
   --fs-biggest: 2rem;
 
   --clr-neutral-dark: #0a0507;
-  --clr-neutral-light: #fff8e7;
+  --clr-neutral-light: #fff;
 
   --clr-primary-dark: #241821;
   --clr-primary: #3B2A3C;
@@ -33,6 +33,7 @@
   color: var(--clr-neutral-dark) !important;
   background-color: var(--clr-neutral-light) !important;
 }
+
 
 .navbar{
   height: 10vh;
