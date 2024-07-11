@@ -28,6 +28,7 @@ const ItemListContainer = () => {
       const productos = response.docs.map((doc) => {
         const newItem = {
           ...doc.data(),
+          id: doc.id
         }
         return newItem
       })

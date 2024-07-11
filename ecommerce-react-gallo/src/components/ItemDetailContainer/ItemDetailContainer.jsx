@@ -14,15 +14,12 @@ const ItemDetailContainer = () => {
     useEffect(() => {
       const getData = async () => {
         const queryRef = doc(db, 'productos', productId)
-
         const response = await getDoc(queryRef)
-
 
         const newItem = {
           ...response.data(),
           id: response.id,
         }
-        console.log(newItem)
         setProducto(newItem)
         setLoading(false) 
       }
