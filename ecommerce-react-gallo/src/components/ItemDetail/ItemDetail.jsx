@@ -16,10 +16,12 @@ import { ToastContainer, toast} from 'react-toastify'
 import Context from '../../context/CartContext'
 
 
-const ItemDetail = ({id, name, brand, price, category, stock, description, img}) => {
+const ItemDetail = ({id, name, brand, price, category, stock, description, img, currentQuantity}) => {
     
-    const { addItem } = useContext(Context)
-  
+    const { addItem } = useContext(Context);
+    const maxAvailable = stock - currentQuantity
+    
+
     const onAdd = (quantity) => {
         const item = {
           id,
@@ -53,6 +55,12 @@ const ItemDetail = ({id, name, brand, price, category, stock, description, img})
               <Text fontSize='2xl'>
                 ${price}
               </Text>
+              <Text fontSize='1xl'>
+                Available stock: {stock} units.
+              </Text>
+              <Text fontSize='1xl'>
+                Currently in cart: {currentQuantity} units.
+              </Text>               
           </Stack>
         </CardBody>
         <Divider />
@@ -61,7 +69,7 @@ const ItemDetail = ({id, name, brand, price, category, stock, description, img})
         alignItems="center"
         p="1rem"
         >
-          < ItemCount stock={stock} onAdd={onAdd}/>
+          < ItemCount stock={stock} onAdd={onAdd} maxAvailable={maxAvailable}/>
           < ToastContainer  />
         </Flex>
       </Card>

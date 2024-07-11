@@ -3,11 +3,11 @@ import { Button, Flex, Text } from '@chakra-ui/react'
 import { Link } from 'react-router-dom';
 import { RiArrowGoBackLine } from "react-icons/ri";
 
-const ItemCount = ({stock, onAdd}) => {
+const ItemCount = ({stock, onAdd, maxAvailable}) => {
     const [count, setCount] = useState(1) ;
 
     const increase = () => {
-      count < stock && setCount(count + 1)
+      count < maxAvailable && setCount(count + 1)
     };
 
     const decrease = () => {
